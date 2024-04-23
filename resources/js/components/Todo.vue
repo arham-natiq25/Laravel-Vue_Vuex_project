@@ -1,11 +1,23 @@
 <template>
     <div>
-        Todo
+      <span :class="{ completed: todo.completed }">{{ todo.title }}</span>
+      <button @click="deleteTodo">Delete</button>
     </div>
-</template>
+  </template>
 
-<script>
-export default {
+  <script>
+  export default {
+    props: ["todo"],
+    methods: {
+      deleteTodo() {
+        this.$store.dispatch("deleteTodo", this.todo);
+      },
+    },
+  };
+  </script>
 
-}
-</script>
+  <style scoped>
+  .completed {
+    text-decoration: line-through;
+  }
+  </style>

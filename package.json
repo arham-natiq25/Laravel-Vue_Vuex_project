@@ -12,7 +12,9 @@
     },
     "dependencies": {
         "@vitejs/plugin-vue": "^5.0.4",
+        "install": "^0.13.0",
         "vue": "^3.4.24",
+        "vue-loader": "^17.4.2",
         "vue-router": "^4.3.2",
         "vuex": "^4.1.0"
     }
