@@ -14,7 +14,18 @@ export default createStore({
     ]
   },
   getters: {
-
+    completedTodos(state)
+    {
+        return state.todos.filter(todo=>{
+            return todo.completed===true;
+        }).length;
+    },
+    pendingTodos(state)
+    {
+        return state.todos.filter(todo=>{
+            return todo.completed===false;
+        }).length;
+    }
   },
   mutations: {
     NEW_TODO(state,todoItem)
@@ -29,6 +40,10 @@ export default createStore({
     {
         let index = state.todos.indexOf(todoItem)
         state.todos.splice(index,1)
+    },
+    TOOGLE_TODO_STATUS(state,todoItem)
+    {
+       todoItem.completed = !todoItem.completed;
     }
   },
   actions: {
@@ -39,6 +54,10 @@ export default createStore({
     deleteTodo({commit},todoItem)
     {
        commit('DELETE_TODO',todoItem)
+    },
+    toggleTodoStatus({commit},todoItem)
+    {
+        commit('TOOGLE_TODO_STATUS',todoItem)
     }
   }
 });
