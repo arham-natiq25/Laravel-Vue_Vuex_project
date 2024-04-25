@@ -11,3 +11,19 @@ export const  getProduct = ({commit},productId)=>{
         commit('SET_PRODUCT',response.data)
     })
 }
+
+export const addProductToCart =  ({commit},{product,quantity})=>{
+
+    commit('ADD_TO_CART',{product,quantity})
+
+    axios.post('/api/cart',{
+        product_id : product.id,
+        quantity
+    })
+}
+
+export const getCartItems = ({commit})=>{
+    axios.get('/api/cart').then(response=>{
+        commit('SET_CART',response.data)
+    })
+}

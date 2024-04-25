@@ -25,7 +25,7 @@
                     aria-haspopup="true"
                     aria-expanded="false"
                 >
-                  0  Cart
+                  {{cartItemsCount}}  Cart
                 </button>
                 <div @click="$event.stopPropagation();
                 ">
@@ -43,7 +43,14 @@
   export default {
     components:{
         Minicart
-    }
+    },
+    computed: {
+        cartItemsCount(){
+            return this.$store.getters.cartItemsCount;
+        },
+
+
+    },
 
   }
   </script>
