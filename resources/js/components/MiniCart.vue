@@ -16,7 +16,7 @@
         <hr>
     </div>
         <div class="d-flex justify-content-between px-2">
-            <span>Total : $ {{ cartTotal }}</span>
+            <span>Total : $ {{ cartTotalPrice }}</span>
             <a href="#" @click.prevent="clearCartItems()">Clear</a>
 
         </div>
@@ -28,10 +28,13 @@ import { mapGetters,mapState,mapActions } from 'vuex'
 export default {
     computed: {
         ...mapState({
-            cart : "cart"
+            cart : state=>state.cart.cart
         }),
         ...mapGetters({
-            cartTotal :'cartTotalPrice'})
+            cartTotalPrice :'cart/cartTotalPrice'
+        })
+
+        // ...mapGetters('cart',['cartTotalPrice'])
         // cart()
         // {
         //     return  this.$store.state.cart
@@ -48,7 +51,12 @@ export default {
         this.getCartItems();
     },
     methods: {
-        ...mapActions(['removeProductFromCart','clearCartItems','getCartItems']),
+        // ...mapActions('cart',['removeProductFromCart','clearCartItems','getCartItems']),
+        ...mapActions({
+            removeProductFromCart : 'cart/removeProductFromCart',
+            clearCartItems :'cart/clearCartItems',
+            getCartItems : 'cart/getCartItems'
+        })
         // removeProductFromCart(product)
         // {
         //     this.$store.dispatch('removeProductFromCart',product);

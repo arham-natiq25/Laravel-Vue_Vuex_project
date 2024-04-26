@@ -14,7 +14,9 @@ import ProductCard from './ProductCard.vue'
     },
 
     computed: {
-        ...mapState(['products']),
+        ...mapState({
+            products : state=> state.product.products
+        }),
         // products()
         // {
         //     return this.$store.state.products
@@ -27,7 +29,7 @@ import ProductCard from './ProductCard.vue'
         this.getProducts();
     },
     methods: {
-        ...mapActions(['getProducts'])
+        ...mapActions('product',['getProducts'])
     },
   }
   </script>

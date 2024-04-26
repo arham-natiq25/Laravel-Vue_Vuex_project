@@ -48,7 +48,7 @@
     computed:{
 
         ...mapGetters({
-            cartItemsCount: "cartItemsCount"
+            cartItemsCount: "cart/cartItemsCount"
         })
         // cartItemsCount(){
             //     return this.$store.getters.cartItemsCount;

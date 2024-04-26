@@ -22,7 +22,7 @@ import { mapActions } from 'vuex';
   export default {
     props : ['product'],
     methods: {
-        ...mapActions(['addProductToCart']),
+        ...mapActions('cart',['addProductToCart']),
 
              addToCart(){
             this.addProductToCart({
