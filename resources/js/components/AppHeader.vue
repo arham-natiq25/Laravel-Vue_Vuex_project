@@ -39,19 +39,22 @@
   </template>
 
   <script>
+  import { mapGetters } from 'vuex';
   import Minicart from './MiniCart.vue';
   export default {
     components:{
         Minicart
     },
-    computed: {
-        cartItemsCount(){
-            return this.$store.getters.cartItemsCount;
-        },
+    computed:{
 
+        ...mapGetters({
+            cartItemsCount: "cartItemsCount"
+        })
+        // cartItemsCount(){
+            //     return this.$store.getters.cartItemsCount;
+            // },
 
-    },
-
+        }
   }
   </script>
 

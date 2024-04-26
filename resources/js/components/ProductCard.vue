@@ -17,12 +17,16 @@
   </template>
 
   <script>
+import { mapActions } from 'vuex';
+
   export default {
     props : ['product'],
     methods: {
-        addToCart(){
-            this.$store.dispatch('addProductToCart',{
-                    product : this.product,
+        ...mapActions(['addProductToCart']),
+
+             addToCart(){
+            this.addProductToCart({
+                product : this.product,
                     quantity : 1
             })
         }

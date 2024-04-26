@@ -6,21 +6,28 @@
   </template>
 
   <script>
-  import ProductCard from './ProductCard.vue'
+  import { mapActions, mapState } from 'vuex';
+import ProductCard from './ProductCard.vue'
   export default {
     components: {
       ProductCard
     },
 
     computed: {
-        products()
-        {
-            return this.$store.state.products
-        }
+        ...mapState(['products']),
+        // products()
+        // {
+        //     return this.$store.state.products
+        // }
     },
 
     mounted() {
-        this.$store.dispatch('getProducts');
+
+        // this.$store.dispatch('getProducts');
+        this.getProducts();
+    },
+    methods: {
+        ...mapActions(['getProducts'])
     },
   }
   </script>

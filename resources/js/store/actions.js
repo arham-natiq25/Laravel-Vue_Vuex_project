@@ -27,3 +27,15 @@ export const getCartItems = ({commit})=>{
         commit('SET_CART',response.data)
     })
 }
+
+export const removeProductFromCart = ({commit},product)=>{
+    commit('REMOVE_PRODUCT_FROM_CART',product)
+
+    axios.delete(`/api/cart/${product.id}`)
+}
+
+export const clearCartItems = ({commit})=>{
+    commit('REMOVE_PRODUCTS_FROM_CART')
+
+    axios.delete(`/api/cart`)
+}
